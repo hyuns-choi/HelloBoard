@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set value="${pageContext.request.contextPath}" var = "cp" />
 <!DOCTYPE html">
 <html>
@@ -53,7 +54,7 @@
 						<div class="buttons">
 							<input type="submit" value="등록" style="height:25px" />
 							<input type="button" value="취소" style="height: 25px"
-							onclick="location.href='${cp}/bbs/list	'" />
+							onclick="location.href='${cp}/bbs/list'" />
 						</div>
 					</form>
 				</div>
