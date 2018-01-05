@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,30 @@ public class DetailServlet extends HttpServlet {
 		BbsDao dao = new BbsDao();
 		Bbs bbs = dao.selectBbsByBbsNo(Integer.parseInt(no));
 		
-		dao.updateReadCount(Integer.parseInt(no));
+		
+		Cookie[] cookies = request.getCookies();
+		String read_count = "0";
+		String new_read_count = "0";
+		if(cookies != null)
+		{
+			for(int i=0; i<cookies.length; i++) {
+				Cookie cookie = cookies[i];
+				if(cookie.getName().equals("read_count")) {
+					read_count = cookie.getValue();
+					break;
+				}
+			}
+		}
+		
+		new_read_count = "|" + no;	//seq
+		
+		if(new_read_count.indexOf(read_count) == -1) {
+			Cookie cookie = new Cookie("read_count", 
+					String.format("%d%s", Integer.parseInt(read_count) + 1, new_read_count));
+			response.addCookie(cookie);
+					
+			dao.updateReadCount(Integer.parseInt(no));
+		}
 		
 		List<BbsFile> files = dao.selectBbsFilesByBbsNo(bbs.getBbsno());
 		
