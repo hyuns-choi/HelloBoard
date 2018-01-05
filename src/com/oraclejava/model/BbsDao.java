@@ -191,4 +191,41 @@ public class BbsDao {
 		
 		return bbsFile;
 	}
+	
+
+	public void updateReadCount(int bbsNo) {
+		String sql = "update bbs set READCOUNT = READCOUNT+1 " + 
+				"where BBSNO=?";
+	
+		try(Connection connection = DBUtil.getDataSource().getConnection();
+				//Statement st = connection.createStatement();				
+				PreparedStatement pstmt = connection.prepareStatement(sql);){
+			
+			//pstmt.setInt(1, bbs.getBbsno());
+			pstmt.setInt(1, bbsNo);
+			
+			pstmt.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateDownloadCount(int no) {
+		String sql = "update BBSFILE set DOWNLOADCOUNT = DOWNLOADCOUNT+1 " + 
+				"where BBSFILENO=?";
+	
+		try(Connection connection = DBUtil.getDataSource().getConnection();
+				//Statement st = connection.createStatement();				
+				PreparedStatement pstmt = connection.prepareStatement(sql);){
+			
+			//pstmt.setInt(1, bbs.getBbsno());
+			pstmt.setInt(1, no);
+			
+			pstmt.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+	}
 }

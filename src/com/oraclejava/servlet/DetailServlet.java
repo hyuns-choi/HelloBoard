@@ -46,6 +46,8 @@ public class DetailServlet extends HttpServlet {
 		BbsDao dao = new BbsDao();
 		Bbs bbs = dao.selectBbsByBbsNo(Integer.parseInt(no));
 		
+		dao.updateReadCount(Integer.parseInt(no));
+		
 		List<BbsFile> files = dao.selectBbsFilesByBbsNo(bbs.getBbsno());
 		
 		request.setAttribute("bbs", bbs);
