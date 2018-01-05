@@ -62,11 +62,11 @@ public class DetailServlet extends HttpServlet {
 			}
 		}
 		
-		new_read_count = "|" + no;	//seq
+		new_read_count = no + "|";	//seq
 		
-		if(new_read_count.indexOf(read_count) == -1) {
+		if(read_count.indexOf(new_read_count) == -1) {
 			Cookie cookie = new Cookie("read_count", 
-					String.format("%d%s", Integer.parseInt(read_count) + 1, new_read_count));
+					String.format("%s%s",read_count, new_read_count));
 			response.addCookie(cookie);
 					
 			dao.updateReadCount(Integer.parseInt(no));
