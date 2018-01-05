@@ -10,7 +10,18 @@ public class Member {
 	private String active;
 	private Date regdate;
 	
+	public Member() {}
 	
+	public Member(String memberid, String passwd, String email, String usertype, String active, Date regdate) {
+
+		this.memberid = memberid;
+		this.passwd = passwd;
+		this.email = email;
+		this.usertype = usertype;
+		this.active = active;
+		this.regdate = regdate;
+	}
+
 	public String getMemberid() {
 		return memberid;
 	}
