@@ -73,7 +73,7 @@ public class DownloadServlet extends HttpServlet {
 		int numRead = 0;
 		while((numRead = fileInputStream.read(b, 0, b.length)) != -1){
 			servletOutputStream.write(b, 0, numRead);
-		}				
+		}
 		
 		servletOutputStream.flush();
 		servletOutputStream.close();
