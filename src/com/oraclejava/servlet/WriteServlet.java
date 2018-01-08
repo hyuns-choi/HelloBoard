@@ -63,6 +63,8 @@ public class WriteServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		Part part = request.getPart("attach");
 		
+		// 파일 업로드
+		
 		String originalname = this.getFileName(part);
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMddHHmmss");
@@ -86,8 +88,7 @@ public class WriteServlet extends HttpServlet {
 		
 		BbsDao dao = new BbsDao();
 		dao.insertBbs(bbs);
-		
-		
+				
 
 		BbsFile bbsFile = new BbsFile();
 		bbsFile.setSavedFileName(savedfilename);

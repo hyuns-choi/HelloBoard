@@ -10,6 +10,8 @@
 <script src="jquery.js"></script>
 <!--  <script src="https://code.jquery.com/jquery-3.2.1.js"></script> -->
 <script>
+// ajax 테스트
+
 	$(document).ready(function(){
 		$.ajax({
 			type: "get",
